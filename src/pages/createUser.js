@@ -1,27 +1,16 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import CreateUserForm from "@/app/components/CreateUserForm";
 
-export default function CreateUser({ createUser }) {
+export default function CreateUser({createUser, isLoggedIn }) {
     const router = useRouter();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
     useEffect(() => {
-        setIsLoggedIn(false);
-    }, []);
+        if (isLoggedIn) router.push("/");
+    }, [isLoggedIn])
 
-    const handleCreateUser = async (userData) => {
-        try {
-            setIsLoggedIn(true);
-            router.push("/");
-        } catch (error) {
-            console.error("Error creating user:", error);
-        }
-    };
-
-    return (
+    return(
         <main>
-            {!isLoggedIn && <CreateUserForm createUser={handleCreateUser} />}
+            <CreateUserForm createUser={createUser}/>
         </main>
     );
 }

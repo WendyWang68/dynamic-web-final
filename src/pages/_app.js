@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Header from "@/app/components/Header";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
 import firebaseConfig from "@/app/components/firebaseConfig";
 import {
     getAuth,
@@ -10,6 +9,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
 } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 export default function MyApp({ Component, pageProps }){
     const [appInitialized, setAppInitialized] = useState(false);
