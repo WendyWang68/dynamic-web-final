@@ -5,19 +5,17 @@ const CreatePostForm = ({ createPostFunction }) => {
     const [imageUpload, setImageUpload] = useState(null);
     const [postDate, setPostDate] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); 
-        createPostFunction(e, imageUpload, postDate); 
-    };
 
     const handleDateChange = (e) => {
         setPostDate(e.target.value); 
     };
 
+    console.log(postDate)
+
     return (
         <div className={styles.FormContainer}>
             <h2 className={styles.Title}>Create Your Christmas Wishlist</h2>
-            <form className={styles.Form} onSubmit={handleSubmit}>
+            <form className={styles.Form} onSubmit={(e) => createPostFunction(e, imageUpload, postDate)}>
                 <label htmlFor="postContent" className={styles.Label}>
                     Write Your Christmas Wishes
                 </label>

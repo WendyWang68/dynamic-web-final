@@ -3,7 +3,7 @@ import styles from './components.module.css';
 const CreateUserForm = ({ createUser }) => {
     return(
         <div className={styles.decor}>
-            <h2>Create User Form</h2>
+            <h1>Create User Form</h1>
             <form className={styles.Form} onSubmit={(e) => createUser(e)}>
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" />

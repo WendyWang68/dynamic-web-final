@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import CreatePostForm from "@/app/components/CreatePostForm";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { ref, getDownloadURL, getStorage, uploadBytes } from "firebase/storage";
 
 export default function CreatePost({ isLoggedIn, userInformation }) {
     const router = useRouter();
@@ -27,7 +28,7 @@ export default function CreatePost({ isLoggedIn, userInformation }) {
                     postContent: postContent,
                     userId: userId,
                     imageURL: imageURL,
-                    postDate: postDate, 
+                    postDate: postDate || 'No Date', 
                 };
 
                 await addDoc(collection(db, "posts"), postData);
